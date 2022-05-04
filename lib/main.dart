@@ -12,23 +12,24 @@ class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
 //this class keeps the state persistent and link it to the class
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  //creating private variable
+  var _questionIndex = 0;
 
-  void RightAnswerQuestion() {
+  void _RightAnswerQuestion() {
     //if correct answer, move to next question
     //setState is anonymous function keeping the state of app
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
   }
 
-  void WrongAnswerQuestion() {
+  void _WrongAnswerQuestion() {
     print('Wrong answer!');
   }
 
@@ -47,24 +48,24 @@ class MyAppState extends State<MyApp> {
             children: [
               Text(
                 //Will print 1st question
-                questions[questionIndex],
+                questions[_questionIndex],
               ),
               RaisedButton(
                 child: Text('Kolkata'),
                 //Pointer to function, not calling the function
-                onPressed: WrongAnswerQuestion,
+                onPressed: _WrongAnswerQuestion,
               ),
               RaisedButton(
                 child: Text('New Delhi'),
-                onPressed: RightAnswerQuestion,
+                onPressed: _RightAnswerQuestion,
               ),
               RaisedButton(
                 child: Text('Jaipur'),
-                onPressed: WrongAnswerQuestion,
+                onPressed: _WrongAnswerQuestion,
               ),
               RaisedButton(
                 child: Text('Mumbai'),
-                onPressed: WrongAnswerQuestion,
+                onPressed: _WrongAnswerQuestion,
               ),
             ],
           )),
