@@ -5,13 +5,27 @@ void main() {
   runApp(MyApp()); //run app
 }
 
-//inheriting the class
-class MyApp extends StatelessWidget {
+//converting into StatefulWidget
+
+//This class gets recreated
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyAppState();
+  }
+}
+
+//this class keeps the state persistent and link it to the class
+class MyAppState extends State<MyApp> {
   var questionIndex = 0;
 
   void RightAnswerQuestion() {
     //if correct answer, move to next question
-    questionIndex = questionIndex + 1;
+    //setState is anonymous function keeping the state of app
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
   }
 
   void WrongAnswerQuestion() {
