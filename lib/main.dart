@@ -7,31 +7,44 @@ void main() {
 
 //inheriting the class
 class MyApp extends StatelessWidget {
+  void RightAnswerQuestion() {
+    print('Correct answer!');
+  }
+
+  void WrongAnswerQuestion() {
+    print('Wrong answer!');
+  }
+
   Widget build(BuildContext context) {
     var questions = [
-      'What\'s your favourite color?',
-      'What\'s your favourite animal',
+      'What\'s the capital of India?',
+      'When did India got independence?',
     ];
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: Text('My Quiz App'),
+            title: Text('Quiz App'),
           ),
           body: Column(
             //Column like format
             children: [
-              Text('The question!'),
+              Text('Question!'),
               RaisedButton(
-                child: Text('Answer 1'),
-                onPressed: null,
+                child: Text('Kolkata'),
+                //Pointer to function, not calling the function
+                onPressed: WrongAnswerQuestion,
               ),
               RaisedButton(
-                child: Text('Answer 2'),
-                onPressed: null,
+                child: Text('New Delhi'),
+                onPressed: RightAnswerQuestion,
               ),
               RaisedButton(
-                child: Text('Answer 3'),
-                onPressed: null,
+                child: Text('Jaipur'),
+                onPressed: WrongAnswerQuestion,
+              ),
+              RaisedButton(
+                child: Text('Mumbai'),
+                onPressed: WrongAnswerQuestion,
               ),
             ],
           )),
