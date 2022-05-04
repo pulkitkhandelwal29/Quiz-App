@@ -7,8 +7,11 @@ void main() {
 
 //inheriting the class
 class MyApp extends StatelessWidget {
+  var questionIndex = 0;
+
   void RightAnswerQuestion() {
-    print('Correct answer!');
+    //if correct answer, move to next question
+    questionIndex = questionIndex + 1;
   }
 
   void WrongAnswerQuestion() {
@@ -28,7 +31,10 @@ class MyApp extends StatelessWidget {
           body: Column(
             //Column like format
             children: [
-              Text('Question!'),
+              Text(
+                //Will print 1st question
+                questions[questionIndex],
+              ),
               RaisedButton(
                 child: Text('Kolkata'),
                 //Pointer to function, not calling the function
