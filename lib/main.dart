@@ -1,5 +1,7 @@
 //importing the base class file that flutter provides functionality
 import 'package:flutter/material.dart';
+//importing to access question widget
+import './question.dart';
 
 void main() {
   runApp(MyApp()); //run app
@@ -46,7 +48,7 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             //Column like format
             children: [
-              Text(
+              Question(
                 //Will print 1st question
                 questions[_questionIndex],
               ),
