@@ -1,9 +1,10 @@
 //importing the base class file that flutter provides functionality
 import 'package:flutter/material.dart';
-//importing to access question widget
-import './question.dart';
-//importing to access answer widget
-import './answer.dart';
+import 'package:quiz_app/result.dart';
+//importing to access quiz widget
+import './quiz.dart';
+//importing to access result widget
+import './result.dart';
 
 void main() {
   runApp(MyApp()); //run app
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
   //questions in the form of Map
-  final questions = const [
+  final _questions = const [
     {
       'questionText': 'What\'s the capital of India?',
       'answers': ['Kolkata', 'New Delhi', 'Jaipur', 'Mumbai'],
@@ -56,27 +57,14 @@ class _MyAppState extends State<MyApp> {
           title: Text('Quiz App'),
         ),
         //Ternary condition
-        body: _questionIndex < questions.length
-            ? Column(
-                //Column like format
-                children: [
-                  Question(
-                    //Will print questions from list of maps
-                    questions[_questionIndex]['questionText']?.toString() ?? '',
-                  ),
-                  //answer widget (taking answer dynamically from map)
-                  //answers are List of string
-                  //...(spread operator) splits list of items into individual items
-                  ...(questions[_questionIndex]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answer(_AnswerQuestion, answer);
-                  }).toList()
-                ],
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                AnswerQuestion: _AnswerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
               )
             //else condition in ternary starting with : (questions over)
-            : Center(
-                child: Text('You did it!'),
-              ),
+            : Result(),
       ),
     );
   }
