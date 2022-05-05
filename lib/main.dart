@@ -26,23 +26,41 @@ class _MyAppState extends State<MyApp> {
   //creating private variable
   var _questionIndex = 0;
 
+  var _totalScore = 0;
+
   //questions in the form of Map
   final _questions = const [
     {
       'questionText': 'What\'s the capital of India?',
-      'answers': ['Kolkata', 'New Delhi', 'Jaipur', 'Mumbai'],
+      'answers': [
+        {'text': 'Kolkata', 'score': 0},
+        {'text': 'New Delhi', 'score': 1},
+        {'text': 'Jaipur', 'score': 0},
+        {'text': 'Mumbai', 'score': 0},
+      ],
     },
     {
       'questionText': 'When did India got independence?',
-      'answers': ['1950', '1945', '1947', '1946'],
+      'answers': [
+        {'text': '1950', 'score': 0},
+        {'text': '1945', 'score': 0},
+        {'text': '1947', 'score': 1},
+        {'text': '1946', 'score': 0},
+      ],
     },
     {
       'questionText': 'Which is the national sport of India?',
-      'answers': ['Cricket', 'Football', 'Kabaddi', 'Hockey'],
+      'answers': [
+        {'text': 'Cricket', 'score': 0},
+        {'text': 'Football', 'score': 0},
+        {'text': 'Kabaddi', 'score': 0},
+        {'text': 'Hockey', 'score': 1},
+      ],
     }
   ];
 
-  void _AnswerQuestion() {
+  void _AnswerQuestion(int score) {
+    _totalScore += score;
     //if answer, move to next question
     //setState is anonymous function keeping the state of app
     setState(() {
@@ -64,7 +82,7 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
               )
             //else condition in ternary starting with : (questions over)
-            : Result(),
+            : Result(_totalScore),
       ),
     );
   }
