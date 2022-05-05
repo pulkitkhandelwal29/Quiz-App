@@ -9,7 +9,7 @@ class Question extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //takes the width of how much it can get
+      //takes the width of how much it can get from screen
       width: double.infinity,
       margin: EdgeInsets.all(30),
       child: Text(

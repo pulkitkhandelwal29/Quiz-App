@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 //importing to access question widget
 import './question.dart';
+//importing to access answer widget
+import './answer.dart';
 
 void main() {
   runApp(MyApp()); //run app
@@ -52,23 +54,12 @@ class _MyAppState extends State<MyApp> {
                 //Will print 1st question
                 questions[_questionIndex],
               ),
-              RaisedButton(
-                child: Text('Kolkata'),
-                //Pointer to function, not calling the function
-                onPressed: _WrongAnswerQuestion,
-              ),
-              RaisedButton(
-                child: Text('New Delhi'),
-                onPressed: _RightAnswerQuestion,
-              ),
-              RaisedButton(
-                child: Text('Jaipur'),
-                onPressed: _WrongAnswerQuestion,
-              ),
-              RaisedButton(
-                child: Text('Mumbai'),
-                onPressed: _WrongAnswerQuestion,
-              ),
+              //calling the answer widget
+              //passing the function as pointer, need to fix it in answer widget
+              Answer(_RightAnswerQuestion),
+              Answer(_RightAnswerQuestion),
+              Answer(_RightAnswerQuestion),
+              Answer(_RightAnswerQuestion),
             ],
           )),
     );
