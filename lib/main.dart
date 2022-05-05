@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   //creating private variable
   var _questionIndex = 0;
 
-  void _RightAnswerQuestion() {
+  void _AnswerQuestion() {
     //if correct answer, move to next question
     //setState is anonymous function keeping the state of app
     setState(() {
@@ -33,26 +33,21 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  void _WrongAnswerQuestion() {
-    print('Wrong answer!');
-  }
-
   Widget build(BuildContext context) {
     //questions in the form of Map
     var questions = [
       {
-        'questionText' : 'What\'s the capital of India?',
+        'questionText': 'What\'s the capital of India?',
         'answers': ['Kolkata', 'New Delhi', 'Jaipur', 'Mumbai'],
-      }
+      },
       {
-        'questionText' : 'When did India got independence?',
+        'questionText': 'When did India got independence?',
         'answers': ['1950', '1945', '1947', '1946'],
-      }
+      },
       {
-        'questionText' : 'Which is the national sport of India?',
+        'questionText': 'Which is the national sport of India?',
         'answers': ['Cricket', 'Football', 'Kabaddi', 'Hockey'],
       }
-            
     ];
     return MaterialApp(
       home: Scaffold(
@@ -63,15 +58,16 @@ class _MyAppState extends State<MyApp> {
             //Column like format
             children: [
               Question(
-                //Will print 1st question
-                questions[_questionIndex],
+                //Will print questions from list of maps
+                questions[_questionIndex]['questionText']?.toString() ?? '',
               ),
-              //calling the answer widget
-              //passing the function as pointer, need to fix it in answer widget
-              Answer(_RightAnswerQuestion),
-              Answer(_RightAnswerQuestion),
-              Answer(_RightAnswerQuestion),
-              Answer(_RightAnswerQuestion),
+              //answer widget (taking answer dynamically from map)
+              //answers are List of string
+              //...(spread operator) splits list of items into individual items
+              ...(questions[_questionIndex]['answers'] as List<String>)
+                  .map((answer) {
+                return Answer(_AnswerQuestion, answer);
+              }).toList()
             ],
           )),
     );
