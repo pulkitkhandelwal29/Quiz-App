@@ -59,6 +59,13 @@ class _MyAppState extends State<MyApp> {
     }
   ];
 
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
   void _AnswerQuestion(int score) {
     _totalScore += score;
     //if answer, move to next question
@@ -82,7 +89,7 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
               )
             //else condition in ternary starting with : (questions over)
-            : Result(_totalScore),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
