@@ -38,9 +38,21 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget build(BuildContext context) {
+    //questions in the form of Map
     var questions = [
-      'What\'s the capital of India?',
-      'When did India got independence?',
+      {
+        'questionText' : 'What\'s the capital of India?',
+        'answers': ['Kolkata', 'New Delhi', 'Jaipur', 'Mumbai'],
+      }
+      {
+        'questionText' : 'When did India got independence?',
+        'answers': ['1950', '1945', '1947', '1946'],
+      }
+      {
+        'questionText' : 'Which is the national sport of India?',
+        'answers': ['Cricket', 'Football', 'Kabaddi', 'Hockey'],
+      }
+            
     ];
     return MaterialApp(
       home: Scaffold(
